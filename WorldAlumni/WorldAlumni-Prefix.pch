@@ -14,3 +14,20 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#else
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreServices/CoreServices.h>
+#endif
+
+// If using Core Data, you may also wish to append
+//#import <CoreData/CoreData.h>
+
+// Make RestKit globally available
+#import <RestKit/RestKit.h>
+
+// Make Facebook sdk globally avialable
+#import <FacebookSDK/FacebookSDK.h>

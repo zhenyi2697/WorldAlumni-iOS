@@ -23,6 +23,13 @@
 		BC7CE0DD18EFC2FF004D2251 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B918EFC2FF004D2251 /* UIKit.framework */; };
 		BC7CE0E518EFC2FF004D2251 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC7CE0E318EFC2FF004D2251 /* InfoPlist.strings */; };
 		BC7CE0E718EFC2FF004D2251 /* WorldAlumniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE0E618EFC2FF004D2251 /* WorldAlumniTests.m */; };
+		BC7CE0F218EFC77F004D2251 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F118EFC77F004D2251 /* MobileCoreServices.framework */; };
+		BC7CE0F418EFC786004D2251 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F318EFC786004D2251 /* Security.framework */; };
+		BC7CE0F618EFC78C004D2251 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F518EFC78C004D2251 /* CFNetwork.framework */; };
+		BC7CE0F818EFC795004D2251 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F718EFC795004D2251 /* SystemConfiguration.framework */; };
+		BC7CE0FA18EFC79C004D2251 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F918EFC79C004D2251 /* CoreData.framework */; };
+		BC7CE10418EFCAD9004D2251 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */; };
+		FC58CB01E30647309A0336C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78A9BB7EE73419D85757E98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A78A9BB7EE73419D85757E98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55470CD33E34099A4963F66 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BC7CE0B218EFC2FF004D2251 /* WorldAlumni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldAlumni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CE0B518EFC2FF004D2251 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +67,12 @@
 		BC7CE0E218EFC2FF004D2251 /* WorldAlumniTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WorldAlumniTests-Info.plist"; sourceTree = "<group>"; };
 		BC7CE0E418EFC2FF004D2251 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC7CE0E618EFC2FF004D2251 /* WorldAlumniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldAlumniTests.m; sourceTree = "<group>"; };
+		BC7CE0F118EFC77F004D2251 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BC7CE0F318EFC786004D2251 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BC7CE0F518EFC78C004D2251 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BC7CE0F718EFC795004D2251 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BC7CE0F918EFC79C004D2251 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +81,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7CE0B818EFC2FF004D2251 /* CoreGraphics.framework in Frameworks */,
-				BC7CE0BA18EFC2FF004D2251 /* UIKit.framework in Frameworks */,
+				BC7CE10418EFCAD9004D2251 /* FacebookSDK.framework in Frameworks */,
 				BC7CE0B618EFC2FF004D2251 /* Foundation.framework in Frameworks */,
+				BC7CE0BA18EFC2FF004D2251 /* UIKit.framework in Frameworks */,
+				BC7CE0FA18EFC79C004D2251 /* CoreData.framework in Frameworks */,
+				BC7CE0F818EFC795004D2251 /* SystemConfiguration.framework in Frameworks */,
+				BC7CE0F618EFC78C004D2251 /* CFNetwork.framework in Frameworks */,
+				BC7CE0F418EFC786004D2251 /* Security.framework in Frameworks */,
+				BC7CE0F218EFC77F004D2251 /* MobileCoreServices.framework in Frameworks */,
+				FC58CB01E30647309A0336C9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +113,7 @@
 				BC7CE0E018EFC2FF004D2251 /* WorldAlumniTests */,
 				BC7CE0B418EFC2FF004D2251 /* Frameworks */,
 				BC7CE0B318EFC2FF004D2251 /* Products */,
+				B55470CD33E34099A4963F66 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,10 +129,17 @@
 		BC7CE0B418EFC2FF004D2251 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */,
+				BC7CE0F918EFC79C004D2251 /* CoreData.framework */,
+				BC7CE0F718EFC795004D2251 /* SystemConfiguration.framework */,
+				BC7CE0F518EFC78C004D2251 /* CFNetwork.framework */,
+				BC7CE0F318EFC786004D2251 /* Security.framework */,
+				BC7CE0F118EFC77F004D2251 /* MobileCoreServices.framework */,
 				BC7CE0B518EFC2FF004D2251 /* Foundation.framework */,
 				BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */,
 				BC7CE0B918EFC2FF004D2251 /* UIKit.framework */,
 				BC7CE0DA18EFC2FF004D2251 /* XCTest.framework */,
+				A78A9BB7EE73419D85757E98 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC7CE0EA18EFC2FF004D2251 /* Build configuration list for PBXNativeTarget "WorldAlumni" */;
 			buildPhases = (
+				0FDAC38692E644E89BAEC13A /* Check Pods Manifest.lock */,
 				BC7CE0AE18EFC2FF004D2251 /* Sources */,
 				BC7CE0AF18EFC2FF004D2251 /* Frameworks */,
 				BC7CE0B018EFC2FF004D2251 /* Resources */,
+				4DB075B23DB747A1BA9FCE1B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +285,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FDAC38692E644E89BAEC13A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4DB075B23DB747A1BA9FCE1B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC7CE0AE18EFC2FF004D2251 /* Sources */ = {
@@ -394,26 +459,106 @@
 		};
 		BC7CE0EB18EFC2FF004D2251 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B55470CD33E34099A4963F66 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WorldAlumni/WorldAlumni-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/TransitionKit\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "WorldAlumni/WorldAlumni-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		BC7CE0EC18EFC2FF004D2251 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B55470CD33E34099A4963F66 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WorldAlumni/WorldAlumni-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/RestKit/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/TransitionKit\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "WorldAlumni/WorldAlumni-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -477,6 +622,7 @@
 				BC7CE0EC18EFC2FF004D2251 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC7CE0ED18EFC2FF004D2251 /* Build configuration list for PBXNativeTarget "WorldAlumniTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +631,7 @@
 				BC7CE0EF18EFC2FF004D2251 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
