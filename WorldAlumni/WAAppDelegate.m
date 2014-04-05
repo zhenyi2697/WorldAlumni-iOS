@@ -7,12 +7,17 @@
 //
 
 #import "WAAppDelegate.h"
+#import "WALoginViewController.h"
 
 @implementation WAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // set the initial tabbar controller to class attribute
+    self.tabBarController = (UITabBarController *)self.window.rootViewController;
+    
+    WALoginViewController *loginViewController = [[WALoginViewController alloc] init];
+    [self.window setRootViewController:loginViewController];
     return YES;
 }
 							

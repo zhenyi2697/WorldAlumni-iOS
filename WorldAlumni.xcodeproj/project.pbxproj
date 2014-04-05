@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1118F041B200C0861F /* WALoginViewController.m */; };
+		BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6DCA1218F041B200C0861F /* WALoginViewController.xib */; };
 		BC7CE0B618EFC2FF004D2251 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B518EFC2FF004D2251 /* Foundation.framework */; };
 		BC7CE0B818EFC2FF004D2251 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */; };
 		BC7CE0BA18EFC2FF004D2251 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B918EFC2FF004D2251 /* UIKit.framework */; };
@@ -45,6 +47,9 @@
 /* Begin PBXFileReference section */
 		A78A9BB7EE73419D85757E98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55470CD33E34099A4963F66 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BC6DCA1018F041B200C0861F /* WALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WALoginViewController.h; sourceTree = "<group>"; };
+		BC6DCA1118F041B200C0861F /* WALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WALoginViewController.m; sourceTree = "<group>"; };
+		BC6DCA1218F041B200C0861F /* WALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WALoginViewController.xib; sourceTree = "<group>"; };
 		BC7CE0B218EFC2FF004D2251 /* WorldAlumni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldAlumni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CE0B518EFC2FF004D2251 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,6 +160,9 @@
 				BC7CE0CE18EFC2FF004D2251 /* WAFirstViewController.m */,
 				BC7CE0D018EFC2FF004D2251 /* WASecondViewController.h */,
 				BC7CE0D118EFC2FF004D2251 /* WASecondViewController.m */,
+				BC6DCA1018F041B200C0861F /* WALoginViewController.h */,
+				BC6DCA1118F041B200C0861F /* WALoginViewController.m */,
+				BC6DCA1218F041B200C0861F /* WALoginViewController.xib */,
 				BC7CE0D318EFC2FF004D2251 /* Images.xcassets */,
 				BC7CE0BC18EFC2FF004D2251 /* Supporting Files */,
 			);
@@ -270,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7CE0CC18EFC2FF004D2251 /* Main_iPad.storyboard in Resources */,
+				BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */,
 				BC7CE0D418EFC2FF004D2251 /* Images.xcassets in Resources */,
 				BC7CE0C918EFC2FF004D2251 /* Main_iPhone.storyboard in Resources */,
 				BC7CE0C018EFC2FF004D2251 /* InfoPlist.strings in Resources */,
@@ -324,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */,
 				BC7CE0C618EFC2FF004D2251 /* WAAppDelegate.m in Sources */,
 				BC7CE0C218EFC2FF004D2251 /* main.m in Sources */,
 				BC7CE0D218EFC2FF004D2251 /* WASecondViewController.m in Sources */,
