@@ -7,17 +7,136 @@
 //
 
 #import "WAAppDelegate.h"
-#import "WALoginViewController.h"
+#import "WADataController.h"
+
 
 @implementation WAAppDelegate
 
+@synthesize tabBarController = _tabBarController, loginViewController = _loginViewController;
+
+- (void)facebookUserLoggedIn
+{
+    NSLog(@"Facebook User Logged in *************");
+    [self.window setRootViewController:self.tabBarController];
+    WADataController *dataController = [WADataController sharedDataController];
+    
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // Success! Include your code to handle the results here
+//            NSLog(@"user info: %@", result);
+            NSString *uid = [NSString stringWithFormat:@"%@", [result objectForKey:@"id"]];
+            NSString *provider = @"facebook";
+            NSLog(@"uid is %@", uid);
+            
+            [dataController checkBindingForUid:uid andProvider:provider];
+
+        } else {
+            // An error occurred, we need to handle the error
+            // See: https://developers.facebook.com/docs/ios/errors
+        }
+    }];
+}
+
+-(void)facebookUserLoggedOut
+{
+    NSLog(@"Facebook User Logged out ################");
+    [self.window setRootViewController:self.loginViewController];
+}
+
+// This method will handle ALL the session state changes in the app
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
+{
+    // If the session was opened successfully
+    if (!error && state == FBSessionStateOpen){
+        NSLog(@"Session opened");
+        // Show the user the logged-in UI
+        [self facebookUserLoggedIn];
+        return;
+    }
+    if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
+        // If the session is closed
+        NSLog(@"Session closed");
+        // Show the user the logged-out UI
+        [self facebookUserLoggedOut];
+    }
+    
+    // Handle errors
+    if (error){
+        NSLog(@"Error");
+        NSString *alertText;
+        NSString *alertTitle;
+        // If the error requires people using an app to make an action outside of the app in order to recover
+        if ([FBErrorUtility shouldNotifyUserForError:error] == YES){
+            alertTitle = @"Something went wrong";
+            alertText = [FBErrorUtility userMessageForError:error];
+            NSLog(@"%@", alertTitle);
+            NSLog(@"%@", alertText);
+//            [self showMessage:alertText withTitle:alertTitle];
+        } else {
+            
+            // If the user cancelled login, do nothing
+            if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
+                NSLog(@"User cancelled login");
+                
+                // Handle session closures that happen outside of the app
+            } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession){
+                alertTitle = @"Session Error";
+                alertText = @"Your current session is no longer valid. Please log in again.";
+                NSLog(@"%@", alertTitle);
+                NSLog(@"%@", alertText);
+//                [self showMessage:alertText withTitle:alertTitle];
+                
+                // Here we will handle all other errors with a generic error message.
+                // We recommend you check our Handling Errors guide for more information
+                // https://developers.facebook.com/docs/ios/errors/
+            } else {
+                //Get more error information from the error
+                NSDictionary *errorInformation = [[[error.userInfo objectForKey:@"com.facebook.sdk:ParsedJSONResponseKey"] objectForKey:@"body"] objectForKey:@"error"];
+                
+                // Show the user an error message
+                alertTitle = @"Something went wrong";
+                alertText = [NSString stringWithFormat:@"Please retry. \n\n If the problem persists contact us and mention this error code: %@", [errorInformation objectForKey:@"message"]];
+//                [self showMessage:alertText withTitle:alertTitle];
+                NSLog(@"%@", alertTitle);
+                NSLog(@"%@", alertText);
+            }
+        }
+        // Clear this token
+        [FBSession.activeSession closeAndClearTokenInformation];
+        // Show the user the logged-out UI
+        [self facebookUserLoggedOut];
+    } else {
+        NSLog(@"Here in else block");
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // make sure that FBLoginView is loaded
+    [FBLoginView class];
+    NSLog(@"in app delegate method ***********************");
+    
     // set the initial tabbar controller to class attribute
     self.tabBarController = (UITabBarController *)self.window.rootViewController;
+    self.loginViewController = [[WALoginViewController alloc] init];
     
-    WALoginViewController *loginViewController = [[WALoginViewController alloc] init];
-    [self.window setRootViewController:loginViewController];
+    // Whenever a person opens the app, check for a cached session
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        
+        // If there's one, just open the session silently, without showing the user the login UI
+        [FBSession openActiveSessionWithReadPermissions:@[@"basic_info", @"email", @"user_education_history", @"user_work_history"]
+                                           allowLoginUI:NO
+                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                          // Handler for session state changes
+                                          // This method will be called EACH time the session state changes,
+                                          // also for intermediate states and NOT just when the session open
+                                          [self sessionStateChanged:session state:state error:error];
+                                      }];
+    } else {
+        // if not cached, load the login view
+        [self.window setRootViewController:self.loginViewController];
+    }
+    
     return YES;
 }
 							
@@ -41,11 +160,35 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // Handle the user leaving the app while the Facebook login dialog is being shown
+    // For example: when the user presses the iOS "home" button while the login dialog is active
+    [FBAppCall handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+// During the Facebook login flow, your app passes control to the Facebook iOS app or Facebook in a mobile browser.
+// After authentication, your app will be called back with the session information.
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Note this handler block should be the exact same as the handler passed to any open calls.
+    [FBSession.activeSession setStateChangeHandler:
+     ^(FBSession *session, FBSessionState state, NSError *error) {
+         
+         // Retrieve the app delegate
+         WAAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+         // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
+         [appDelegate sessionStateChanged:session state:state error:error];
+     }];
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+}
+
 
 @end

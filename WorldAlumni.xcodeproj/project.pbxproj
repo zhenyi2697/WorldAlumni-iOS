@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1118F041B200C0861F /* WALoginViewController.m */; };
 		BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6DCA1218F041B200C0861F /* WALoginViewController.xib */; };
+		BC6DCA1918F080A500C0861F /* WADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1818F080A500C0861F /* WADataController.m */; };
+		BC6DCA1C18F0815100C0861F /* WABinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1B18F0815100C0861F /* WABinding.m */; };
+		BC6DCA2018F08AF600C0861F /* WAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1F18F08AF600C0861F /* WAUser.m */; };
+		BC6DCA2318F08B6200C0861F /* WASchool.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA2218F08B6200C0861F /* WASchool.m */; };
+		BC6DCA2618F0A16A00C0861F /* WAMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA2518F0A16A00C0861F /* WAMappingProvider.m */; };
+		BC6DCA2F18F0A62A00C0861F /* WACheckBindingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA2E18F0A62A00C0861F /* WACheckBindingRequest.m */; };
+		BC6DCA3218F0B0C800C0861F /* WAObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA3118F0B0C800C0861F /* WAObjectManager.m */; };
 		BC7CE0B618EFC2FF004D2251 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B518EFC2FF004D2251 /* Foundation.framework */; };
 		BC7CE0B818EFC2FF004D2251 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */; };
 		BC7CE0BA18EFC2FF004D2251 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0B918EFC2FF004D2251 /* UIKit.framework */; };
@@ -50,6 +57,20 @@
 		BC6DCA1018F041B200C0861F /* WALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WALoginViewController.h; sourceTree = "<group>"; };
 		BC6DCA1118F041B200C0861F /* WALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WALoginViewController.m; sourceTree = "<group>"; };
 		BC6DCA1218F041B200C0861F /* WALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WALoginViewController.xib; sourceTree = "<group>"; };
+		BC6DCA1718F080A500C0861F /* WADataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WADataController.h; sourceTree = "<group>"; };
+		BC6DCA1818F080A500C0861F /* WADataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WADataController.m; sourceTree = "<group>"; };
+		BC6DCA1A18F0815100C0861F /* WABinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABinding.h; sourceTree = "<group>"; };
+		BC6DCA1B18F0815100C0861F /* WABinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WABinding.m; sourceTree = "<group>"; };
+		BC6DCA1E18F08AF600C0861F /* WAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAUser.h; sourceTree = "<group>"; };
+		BC6DCA1F18F08AF600C0861F /* WAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAUser.m; sourceTree = "<group>"; };
+		BC6DCA2118F08B6200C0861F /* WASchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASchool.h; sourceTree = "<group>"; };
+		BC6DCA2218F08B6200C0861F /* WASchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASchool.m; sourceTree = "<group>"; };
+		BC6DCA2418F0A16A00C0861F /* WAMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAMappingProvider.h; sourceTree = "<group>"; };
+		BC6DCA2518F0A16A00C0861F /* WAMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAMappingProvider.m; sourceTree = "<group>"; };
+		BC6DCA2D18F0A62A00C0861F /* WACheckBindingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACheckBindingRequest.h; sourceTree = "<group>"; };
+		BC6DCA2E18F0A62A00C0861F /* WACheckBindingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACheckBindingRequest.m; sourceTree = "<group>"; };
+		BC6DCA3018F0B0C800C0861F /* WAObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAObjectManager.h; sourceTree = "<group>"; };
+		BC6DCA3118F0B0C800C0861F /* WAObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAObjectManager.m; sourceTree = "<group>"; };
 		BC7CE0B218EFC2FF004D2251 /* WorldAlumni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldAlumni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CE0B518EFC2FF004D2251 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CE0B718EFC2FF004D2251 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +132,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC6DCA1D18F08AD900C0861F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BC6DCA1A18F0815100C0861F /* WABinding.h */,
+				BC6DCA1B18F0815100C0861F /* WABinding.m */,
+				BC6DCA1E18F08AF600C0861F /* WAUser.h */,
+				BC6DCA1F18F08AF600C0861F /* WAUser.m */,
+				BC6DCA2118F08B6200C0861F /* WASchool.h */,
+				BC6DCA2218F08B6200C0861F /* WASchool.m */,
+				BC6DCA2D18F0A62A00C0861F /* WACheckBindingRequest.h */,
+				BC6DCA2E18F0A62A00C0861F /* WACheckBindingRequest.m */,
+				BC6DCA3018F0B0C800C0861F /* WAObjectManager.h */,
+				BC6DCA3118F0B0C800C0861F /* WAObjectManager.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 		BC7CE0A918EFC2FF004D2251 = {
 			isa = PBXGroup;
 			children = (
@@ -152,14 +190,19 @@
 		BC7CE0BB18EFC2FF004D2251 /* WorldAlumni */ = {
 			isa = PBXGroup;
 			children = (
+				BC6DCA1D18F08AD900C0861F /* models */,
 				BC7CE0C418EFC2FF004D2251 /* WAAppDelegate.h */,
 				BC7CE0C518EFC2FF004D2251 /* WAAppDelegate.m */,
+				BC6DCA2418F0A16A00C0861F /* WAMappingProvider.h */,
+				BC6DCA2518F0A16A00C0861F /* WAMappingProvider.m */,
 				BC7CE0C718EFC2FF004D2251 /* Main_iPhone.storyboard */,
 				BC7CE0CA18EFC2FF004D2251 /* Main_iPad.storyboard */,
 				BC7CE0CD18EFC2FF004D2251 /* WAFirstViewController.h */,
 				BC7CE0CE18EFC2FF004D2251 /* WAFirstViewController.m */,
 				BC7CE0D018EFC2FF004D2251 /* WASecondViewController.h */,
 				BC7CE0D118EFC2FF004D2251 /* WASecondViewController.m */,
+				BC6DCA1718F080A500C0861F /* WADataController.h */,
+				BC6DCA1818F080A500C0861F /* WADataController.m */,
 				BC6DCA1018F041B200C0861F /* WALoginViewController.h */,
 				BC6DCA1118F041B200C0861F /* WALoginViewController.m */,
 				BC6DCA1218F041B200C0861F /* WALoginViewController.xib */,
@@ -333,9 +376,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6DCA2318F08B6200C0861F /* WASchool.m in Sources */,
+				BC6DCA2F18F0A62A00C0861F /* WACheckBindingRequest.m in Sources */,
+				BC6DCA3218F0B0C800C0861F /* WAObjectManager.m in Sources */,
 				BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */,
+				BC6DCA1C18F0815100C0861F /* WABinding.m in Sources */,
+				BC6DCA2018F08AF600C0861F /* WAUser.m in Sources */,
 				BC7CE0C618EFC2FF004D2251 /* WAAppDelegate.m in Sources */,
 				BC7CE0C218EFC2FF004D2251 /* main.m in Sources */,
+				BC6DCA1918F080A500C0861F /* WADataController.m in Sources */,
+				BC6DCA2618F0A16A00C0861F /* WAMappingProvider.m in Sources */,
 				BC7CE0D218EFC2FF004D2251 /* WASecondViewController.m in Sources */,
 				BC7CE0CF18EFC2FF004D2251 /* WAFirstViewController.m in Sources */,
 			);

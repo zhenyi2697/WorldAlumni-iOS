@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WALoginViewController : UIViewController
-- (IBAction)login:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @end

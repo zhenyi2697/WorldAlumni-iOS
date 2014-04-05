@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WALoginViewController.h"
 
 @interface WAAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) WALoginViewController *loginViewController;
+
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 
 @end
