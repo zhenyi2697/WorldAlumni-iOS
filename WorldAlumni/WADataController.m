@@ -41,6 +41,7 @@
     WACheckBindingRequest *request = [[WACheckBindingRequest alloc] init];
     request.uid = uid;
     request.provider = provider;
+    request.access_token = [[[FBSession activeSession] accessTokenData] accessToken];
     
     [manager postObject:request path:@"/api/check_binding/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
         NSLog(@"Success");
@@ -51,6 +52,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Error");
     }];
+    
 }
 
 @end

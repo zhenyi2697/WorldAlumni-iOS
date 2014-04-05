@@ -43,6 +43,7 @@
     [checkBindingMapping addAttributeMappingsFromDictionary:@{
                                                       @"uid" : @"uid",
                                                       @"provider": @"provider",
+                                                      @"access_token": @"access_token"
                                                       }];
     return checkBindingMapping;
 }

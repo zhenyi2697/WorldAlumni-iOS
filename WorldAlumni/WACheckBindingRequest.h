@@ -11,4 +11,5 @@
 @interface WACheckBindingRequest : NSObject
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *provider;
+@property (strong, nonatomic) NSString *access_token;
 @end

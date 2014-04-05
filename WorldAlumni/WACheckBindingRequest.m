@@ -9,5 +9,5 @@
 #import "WACheckBindingRequest.h"
 
 @implementation WACheckBindingRequest
-@synthesize uid = _uid, provider = _provider;
+@synthesize uid = _uid, provider = _provider, access_token = _access_token;
 @end
