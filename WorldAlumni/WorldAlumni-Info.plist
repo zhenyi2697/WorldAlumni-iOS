@@ -26,6 +26,8 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
+	<key>CFBundleIconFile</key>
+	<string>WorldAlumni.png</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>

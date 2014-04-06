@@ -7,17 +7,25 @@
 //
 
 #import "WADataController.h"
-#import "WABinding.h"
 #import "WAMappingProvider.h"
 #import "WACheckBindingRequest.h"
 #import "WAObjectManager.h"
 
 @implementation WADataController
+
+@synthesize locationManager = _locationManager, currentLocation = _currentLocation;
+
 + (id)sharedDataController {
     static WADataController *sharedDataController = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedDataController = [[self alloc] init];
+        
+        sharedDataController.locationManager = [[CLLocationManager alloc] init];
+        sharedDataController.locationManager.delegate = sharedDataController;
+        sharedDataController.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        [sharedDataController.locationManager startUpdatingLocation];
     });
     return sharedDataController;
 }
@@ -45,14 +53,76 @@
     
     [manager postObject:request path:@"/api/check_binding/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
         NSLog(@"Success");
+        NSArray *bindings = [result array];
         for (WABinding *b in [result array]) {
             NSLog(@"%@", b);
+        }
+        
+        if ([bindings count] > 0) {
+            [self postLocationForBinding: [bindings objectAtIndex:0]];
         }
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Error");
     }];
     
+}
+
+-(void)postLocationForBinding:(WABinding *)binding
+{
+    RKObjectMapping *locationRequestMapping = [WAMappingProvider locationRequestMapping];
+//    RKObjectMapping *locationMapping = [WAMappingProvider locationMapping];
+    RKObjectMapping *userNearbyMapping = [WAMappingProvider userNearbyMapping];
+    
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[locationRequestMapping inverseMapping] objectClass:[WALocation class] rootKeyPath:nil  method:RKRequestMethodAny];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userNearbyMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
+    
+    WAObjectManager *manager = [WAObjectManager objectManager];
+    
+    [manager addRequestDescriptor:requestDescriptor];
+    [manager addResponseDescriptor:responseDescriptor];
+    
+    // Prepare request object
+    WALocation *locationRequest = [[WALocation alloc] init];
+    locationRequest.bindingId = binding.bindingId;
+    float longitude = self.currentLocation.coordinate.longitude;
+    float latitude = self.currentLocation.coordinate.latitude;
+    NSLog(@"latitude %f", latitude);
+    locationRequest.latitude = [NSString stringWithFormat:@"%f", latitude];
+    locationRequest.longitude = [NSString stringWithFormat:@"%f", longitude];
+    
+    [manager postObject:locationRequest path:@"/api/location/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+        NSLog(@"Success");
+        
+        for (WAUserNearby *u in [result array]) {
+            NSLog(@"%@", u.firstName);
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"Error");
+    }];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+//    NSLog(@"didUpdateToLocation: %@", newLocation);
+    self.currentLocation = newLocation;
+    
+//    if (self.currentLocation != nil) {
+////        longitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+////        latitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+//    }
 }
 
 @end

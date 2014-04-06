@@ -12,4 +12,8 @@
 + (RKObjectMapping *) userMapping;
 + (RKObjectMapping *) bindingMapping;
 + (RKObjectMapping *) checkBindingRequestMapping;
++ (RKObjectMapping *) locationMapping;
++ (RKObjectMapping *) locationRequestMapping;
++ (RKObjectMapping *) userNearbyMapping;
++ (RKObjectMapping *) attendanceMapping;
 @end

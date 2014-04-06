@@ -23,7 +23,7 @@
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             // Success! Include your code to handle the results here
-//            NSLog(@"user info: %@", result);
+            NSLog(@"user info: %@", result);
             NSString *uid = [NSString stringWithFormat:@"%@", [result objectForKey:@"id"]];
             NSString *provider = @"facebook";
             NSLog(@"uid is %@", uid);

@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WABinding.h"
+#import "WALocation.h"
+#import "WAUserNearby.h"
+#import "WAAttendance.h"
 
-@interface WADataController : NSObject
+@interface WADataController : NSObject <CLLocationManagerDelegate>
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
 +(id)sharedDataController;
 
 -(void)checkBindingForUid:(NSString *)uid andProvider:(NSString *)provider;
+-(void)postLocationForBinding:(WABinding *)binding;
 @end
