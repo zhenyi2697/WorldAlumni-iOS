@@ -110,7 +110,7 @@
     }
     
     // Using SDWebImage to load image
-    NSString *imageUrl = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=100&height=100", user.uid];
+    NSString *imageUrl = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", user.uid];
     [cell.thumbnailImageView setImageWithURL:[NSURL URLWithString:imageUrl]
                    placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
     CALayer * l = [cell.thumbnailImageView layer];
@@ -142,4 +142,6 @@
 }
 */
 
+- (IBAction)filter:(id)sender {
+}
 @end

@@ -94,6 +94,7 @@
     [manager postObject:locationRequest path:@"/api/nearby_users/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
         WAAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         appDelegate.listViewController.nearbyUsers = [result array];
+        appDelegate.listViewController.navigationItem.leftBarButtonItem = appDelegate.listViewController.filterButton;
         
         for (WAUserNearby *u in [result array]) {
             NSLog(@"%@", u.firstName);

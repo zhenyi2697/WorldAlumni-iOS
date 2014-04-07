@@ -9,21 +9,20 @@
 #import "WAAppDelegate.h"
 #import "WADataController.h"
 
-
 @implementation WAAppDelegate
 
 @synthesize tabBarController = _tabBarController, loginViewController = _loginViewController;
-@synthesize listViewController = _listViewController;
+@synthesize listViewController = _listViewController, mapViewController = _mapViewController;
 
 - (void)facebookUserLoggedIn
 {
     NSLog(@"Facebook User Logged in *************");
     [self.window setRootViewController:self.tabBarController];
     WADataController *dataController = [WADataController sharedDataController];
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
-    WAListViewController *listViewController = [[navigationController viewControllers] objectAtIndex:0];
-    self.listViewController = listViewController;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.listViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
@@ -124,6 +123,13 @@
     // set the initial tabbar controller to class attribute
     self.tabBarController = (UITabBarController *)self.window.rootViewController;
     self.loginViewController = [[WALoginViewController alloc] init];
+    
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+    self.listViewController = [[navigationController viewControllers] objectAtIndex:0];
+    
+    UINavigationController *mapNavigationController = [[tabBarController viewControllers] objectAtIndex:1];
+    self.mapViewController = [[mapNavigationController viewControllers] objectAtIndex:0];
     
     // Whenever a person opens the app, check for a cached session
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {

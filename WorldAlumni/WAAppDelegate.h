@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WALoginViewController.h"
 #import "WAListViewController.h"
+#import "WAMapViewController.h"
 
 @interface WAAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) WALoginViewController *loginViewController;
 @property (strong, nonatomic) WAListViewController *listViewController;
+@property (strong, nonatomic) WAMapViewController *mapViewController;
 
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 

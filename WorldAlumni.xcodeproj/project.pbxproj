@@ -25,6 +25,7 @@
 		BC2A0DBF18F26D10001FEDDD /* linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DBD18F26D10001FEDDD /* linkedin.png */; };
 		BC2A0DC218F26ECC001FEDDD /* 64-facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DC018F26ECC001FEDDD /* 64-facebook.png */; };
 		BC2A0DC318F26ECC001FEDDD /* 64-linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DC118F26ECC001FEDDD /* 64-linkedin.png */; };
+		BC2A0DC518F278E2001FEDDD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2A0DC418F278E2001FEDDD /* MapKit.framework */; };
 		BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1118F041B200C0861F /* WALoginViewController.m */; };
 		BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6DCA1218F041B200C0861F /* WALoginViewController.xib */; };
 		BC6DCA1918F080A500C0861F /* WADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1818F080A500C0861F /* WADataController.m */; };
@@ -97,6 +98,7 @@
 		BC2A0DBD18F26D10001FEDDD /* linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedin.png; sourceTree = "<group>"; };
 		BC2A0DC018F26ECC001FEDDD /* 64-facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "64-facebook.png"; sourceTree = "<group>"; };
 		BC2A0DC118F26ECC001FEDDD /* 64-linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "64-linkedin.png"; sourceTree = "<group>"; };
+		BC2A0DC418F278E2001FEDDD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC6DCA1018F041B200C0861F /* WALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WALoginViewController.h; sourceTree = "<group>"; };
 		BC6DCA1118F041B200C0861F /* WALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WALoginViewController.m; sourceTree = "<group>"; };
 		BC6DCA1218F041B200C0861F /* WALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WALoginViewController.xib; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2A0DC518F278E2001FEDDD /* MapKit.framework in Frameworks */,
 				BC2A0DAC18F248BA001FEDDD /* ImageIO.framework in Frameworks */,
 				BC2A0DAA18F24881001FEDDD /* SDWebImage.framework in Frameworks */,
 				BC2A0D8618F1AC29001FEDDD /* CoreLocation.framework in Frameworks */,
@@ -226,6 +229,7 @@
 		BC7CE0B418EFC2FF004D2251 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC2A0DC418F278E2001FEDDD /* MapKit.framework */,
 				BC2A0DAB18F248BA001FEDDD /* ImageIO.framework */,
 				BC2A0D8518F1AC29001FEDDD /* CoreLocation.framework */,
 				BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */,
