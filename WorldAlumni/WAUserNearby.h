@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *provider;
 @property (strong, nonatomic) NSString *distance;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *appearTime;
 @property (strong, nonatomic) NSArray *attendances;
 @property (strong, nonatomic) NSArray *associatedAttendances;

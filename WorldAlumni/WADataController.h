@@ -18,5 +18,5 @@
 +(id)sharedDataController;
 
 -(void)checkBindingForUid:(NSString *)uid andProvider:(NSString *)provider;
--(void)postLocationForBinding:(WABinding *)binding;
+-(void)nearbyUsersForBinding:(WABinding *)binding;
 @end

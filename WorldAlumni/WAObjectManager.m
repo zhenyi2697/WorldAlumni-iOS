@@ -11,7 +11,8 @@
 @implementation WAObjectManager
 +(WAObjectManager *)objectManager
 {
-    NSURL *url = [NSURL URLWithString:@"http://worldalumni.io:8000"];
+    NSURL *url = [NSURL URLWithString:@"http://theworldalumni.com"];
+//    NSURL *url = [NSURL URLWithString:@"http://worldalumni.io:8000"];
     WAObjectManager *objectManager  = [self managerWithBaseURL:url];
     return objectManager;
 }

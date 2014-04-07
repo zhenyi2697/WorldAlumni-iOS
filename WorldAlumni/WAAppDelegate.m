@@ -13,17 +13,22 @@
 @implementation WAAppDelegate
 
 @synthesize tabBarController = _tabBarController, loginViewController = _loginViewController;
+@synthesize listViewController = _listViewController;
 
 - (void)facebookUserLoggedIn
 {
     NSLog(@"Facebook User Logged in *************");
     [self.window setRootViewController:self.tabBarController];
     WADataController *dataController = [WADataController sharedDataController];
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+    WAListViewController *listViewController = [[navigationController viewControllers] objectAtIndex:0];
+    self.listViewController = listViewController;
     
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             // Success! Include your code to handle the results here
-            NSLog(@"user info: %@", result);
+//            NSLog(@"user info: %@", result);
             NSString *uid = [NSString stringWithFormat:@"%@", [result objectForKey:@"id"]];
             NSString *provider = @"facebook";
             NSLog(@"uid is %@", uid);

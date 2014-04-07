@@ -98,6 +98,8 @@
                                                                  @"last_name": @"lastName",
                                                                  @"provider": @"provider",
                                                                  @"distance": @"distance",
+                                                                 @"longitude": @"longitude",
+                                                                 @"latitude": @"latitude",
                                                                  @"appear_time": @"appearTime"
                                                                  }];
     

@@ -10,6 +10,7 @@
 #import "WAMappingProvider.h"
 #import "WACheckBindingRequest.h"
 #import "WAObjectManager.h"
+#import "WAAppDelegate.h"
 
 @implementation WADataController
 
@@ -54,12 +55,11 @@
     [manager postObject:request path:@"/api/check_binding/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
         NSLog(@"Success");
         NSArray *bindings = [result array];
-        for (WABinding *b in [result array]) {
-            NSLog(@"%@", b);
-        }
         
-        if ([bindings count] > 0) {
-            [self postLocationForBinding: [bindings objectAtIndex:0]];
+        for (WABinding *b in bindings) {
+            if ([b.provider isEqual:provider]) {
+                [self nearbyUsersForBinding:b];
+            }
         }
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -68,7 +68,7 @@
     
 }
 
--(void)postLocationForBinding:(WABinding *)binding
+-(void)nearbyUsersForBinding:(WABinding *)binding
 {
     RKObjectMapping *locationRequestMapping = [WAMappingProvider locationRequestMapping];
 //    RKObjectMapping *locationMapping = [WAMappingProvider locationMapping];
@@ -88,12 +88,12 @@
     locationRequest.bindingId = binding.bindingId;
     float longitude = self.currentLocation.coordinate.longitude;
     float latitude = self.currentLocation.coordinate.latitude;
-    NSLog(@"latitude %f", latitude);
     locationRequest.latitude = [NSString stringWithFormat:@"%f", latitude];
     locationRequest.longitude = [NSString stringWithFormat:@"%f", longitude];
     
-    [manager postObject:locationRequest path:@"/api/location/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-        NSLog(@"Success");
+    [manager postObject:locationRequest path:@"/api/nearby_users/" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+        WAAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        appDelegate.listViewController.nearbyUsers = [result array];
         
         for (WAUserNearby *u in [result array]) {
             NSLog(@"%@", u.firstName);

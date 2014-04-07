@@ -31,3 +31,7 @@
 
 // Make Facebook sdk globally avialable
 #import <FacebookSDK/FacebookSDK.h>
+
+// SDWebImage
+#import <SDWebImage/UIImageView+WebCache.h>
+
