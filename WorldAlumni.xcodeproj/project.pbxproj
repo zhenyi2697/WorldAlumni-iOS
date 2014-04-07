@@ -26,6 +26,7 @@
 		BC2A0DC218F26ECC001FEDDD /* 64-facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DC018F26ECC001FEDDD /* 64-facebook.png */; };
 		BC2A0DC318F26ECC001FEDDD /* 64-linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DC118F26ECC001FEDDD /* 64-linkedin.png */; };
 		BC2A0DC518F278E2001FEDDD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2A0DC418F278E2001FEDDD /* MapKit.framework */; };
+		BC2A0DC918F27E7A001FEDDD /* WAUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */; };
 		BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1118F041B200C0861F /* WALoginViewController.m */; };
 		BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6DCA1218F041B200C0861F /* WALoginViewController.xib */; };
 		BC6DCA1918F080A500C0861F /* WADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1818F080A500C0861F /* WADataController.m */; };
@@ -99,6 +100,8 @@
 		BC2A0DC018F26ECC001FEDDD /* 64-facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "64-facebook.png"; sourceTree = "<group>"; };
 		BC2A0DC118F26ECC001FEDDD /* 64-linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "64-linkedin.png"; sourceTree = "<group>"; };
 		BC2A0DC418F278E2001FEDDD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BC2A0DC718F27E7A001FEDDD /* WAUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAUserDetailViewController.h; sourceTree = "<group>"; };
+		BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAUserDetailViewController.m; sourceTree = "<group>"; };
 		BC6DCA1018F041B200C0861F /* WALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WALoginViewController.h; sourceTree = "<group>"; };
 		BC6DCA1118F041B200C0861F /* WALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WALoginViewController.m; sourceTree = "<group>"; };
 		BC6DCA1218F041B200C0861F /* WALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WALoginViewController.xib; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				BC2A0D9018F213E3001FEDDD /* WAListViewController.m */,
 				BC2A0DB118F25FE8001FEDDD /* WAUserNearbyTableViewCell.h */,
 				BC2A0DB218F25FE8001FEDDD /* WAUserNearbyTableViewCell.m */,
+				BC2A0DC718F27E7A001FEDDD /* WAUserDetailViewController.h */,
+				BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */,
 				BC2A0D9218F21459001FEDDD /* WAMapViewController.h */,
 				BC2A0D9318F21459001FEDDD /* WAMapViewController.m */,
 				BC2A0D9518F21472001FEDDD /* WASettingViewController.h */,
@@ -470,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2A0DC918F27E7A001FEDDD /* WAUserDetailViewController.m in Sources */,
 				BC6DCA2318F08B6200C0861F /* WASchool.m in Sources */,
 				BC6DCA2F18F0A62A00C0861F /* WACheckBindingRequest.m in Sources */,
 				BC6DCA3218F0B0C800C0861F /* WAObjectManager.m in Sources */,

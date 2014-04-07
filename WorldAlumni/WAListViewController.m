@@ -7,6 +7,7 @@
 //
 
 #import "WAListViewController.h"
+#import "WAUserDetailViewController.h"
 
 @interface WAListViewController ()
 
@@ -131,16 +132,21 @@
     });
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Perform segue to user detail
+    [self performSegueWithIdentifier:@"showUserDetailFromListView" sender:tableView];
 }
-*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+     if ([[segue identifier] isEqualToString:@"showUserDetailFromListView"]) {
+ 
+         WAUserDetailViewController *detailViewController = [segue destinationViewController];
+         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+         WAUserNearby *user = [self.nearbyUsers objectAtIndex:indexPath.row];
+         detailViewController.user = user;
+     }
+ }
 
 - (IBAction)filter:(id)sender {
 }
