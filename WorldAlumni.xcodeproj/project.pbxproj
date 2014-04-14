@@ -27,6 +27,7 @@
 		BC2A0DC318F26ECC001FEDDD /* 64-linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2A0DC118F26ECC001FEDDD /* 64-linkedin.png */; };
 		BC2A0DC518F278E2001FEDDD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2A0DC418F278E2001FEDDD /* MapKit.framework */; };
 		BC2A0DC918F27E7A001FEDDD /* WAUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */; };
+		BC5A19D918FB928700F26C8A /* WAUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5A19D818FB928700F26C8A /* WAUserAnnotation.m */; };
 		BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1118F041B200C0861F /* WALoginViewController.m */; };
 		BC6DCA1418F041B200C0861F /* WALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6DCA1218F041B200C0861F /* WALoginViewController.xib */; };
 		BC6DCA1918F080A500C0861F /* WADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6DCA1818F080A500C0861F /* WADataController.m */; };
@@ -57,6 +58,7 @@
 		BC7CE0FA18EFC79C004D2251 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE0F918EFC79C004D2251 /* CoreData.framework */; };
 		BC7CE10418EFCAD9004D2251 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */; };
 		BC9937A818F0EB510045DF70 /* WorldAlumni.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9937A718F0EB510045DF70 /* WorldAlumni.png */; };
+		BCAC187C18FADF03006C400C /* WAUserDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAC187B18FADF03006C400C /* WAUserDetailTableViewCell.m */; };
 		FC58CB01E30647309A0336C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78A9BB7EE73419D85757E98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +104,8 @@
 		BC2A0DC418F278E2001FEDDD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC2A0DC718F27E7A001FEDDD /* WAUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAUserDetailViewController.h; sourceTree = "<group>"; };
 		BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAUserDetailViewController.m; sourceTree = "<group>"; };
+		BC5A19D718FB928700F26C8A /* WAUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAUserAnnotation.h; sourceTree = "<group>"; };
+		BC5A19D818FB928700F26C8A /* WAUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAUserAnnotation.m; sourceTree = "<group>"; };
 		BC6DCA1018F041B200C0861F /* WALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WALoginViewController.h; sourceTree = "<group>"; };
 		BC6DCA1118F041B200C0861F /* WALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WALoginViewController.m; sourceTree = "<group>"; };
 		BC6DCA1218F041B200C0861F /* WALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WALoginViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		BC7CE0F918EFC79C004D2251 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BC7CE10318EFCAD9004D2251 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BC9937A718F0EB510045DF70 /* WorldAlumni.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorldAlumni.png; sourceTree = "<group>"; };
+		BCAC187A18FADF03006C400C /* WAUserDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAUserDetailTableViewCell.h; sourceTree = "<group>"; };
+		BCAC187B18FADF03006C400C /* WAUserDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAUserDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,8 +273,12 @@
 				BC2A0DB218F25FE8001FEDDD /* WAUserNearbyTableViewCell.m */,
 				BC2A0DC718F27E7A001FEDDD /* WAUserDetailViewController.h */,
 				BC2A0DC818F27E7A001FEDDD /* WAUserDetailViewController.m */,
+				BCAC187A18FADF03006C400C /* WAUserDetailTableViewCell.h */,
+				BCAC187B18FADF03006C400C /* WAUserDetailTableViewCell.m */,
 				BC2A0D9218F21459001FEDDD /* WAMapViewController.h */,
 				BC2A0D9318F21459001FEDDD /* WAMapViewController.m */,
+				BC5A19D718FB928700F26C8A /* WAUserAnnotation.h */,
+				BC5A19D818FB928700F26C8A /* WAUserAnnotation.m */,
 				BC2A0D9518F21472001FEDDD /* WASettingViewController.h */,
 				BC2A0D9618F21472001FEDDD /* WASettingViewController.m */,
 				BC6DCA1018F041B200C0861F /* WALoginViewController.h */,
@@ -479,6 +489,7 @@
 				BC6DCA2318F08B6200C0861F /* WASchool.m in Sources */,
 				BC6DCA2F18F0A62A00C0861F /* WACheckBindingRequest.m in Sources */,
 				BC6DCA3218F0B0C800C0861F /* WAObjectManager.m in Sources */,
+				BC5A19D918FB928700F26C8A /* WAUserAnnotation.m in Sources */,
 				BC6DCA1318F041B200C0861F /* WALoginViewController.m in Sources */,
 				BC2A0D9118F213E3001FEDDD /* WAListViewController.m in Sources */,
 				BC2A0D8C18F1EF3A001FEDDD /* WAAttendance.m in Sources */,
@@ -494,6 +505,7 @@
 				BC2A0D8418F1A623001FEDDD /* WALocation.m in Sources */,
 				BC6DCA2618F0A16A00C0861F /* WAMappingProvider.m in Sources */,
 				BC2A0D8918F1EF25001FEDDD /* WAUserNearby.m in Sources */,
+				BCAC187C18FADF03006C400C /* WAUserDetailTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "WAListViewController.h"
 #import "WAUserDetailViewController.h"
+#import "WADataController.h"
 
 @interface WAListViewController ()
 
@@ -110,10 +111,26 @@
         cell.associatedAttendancelabel.text = @"No common schools";
     }
     
+    NSString *imageUrlString;
+    if ([user.provider isEqualToString:@"facebook"]) {
+        UIImageView *fbImageView = [[UIImageView alloc] initWithFrame:CGRectMake(87, 63, 16, 16)];
+        [fbImageView setImage: [UIImage imageNamed:@"facebook.png"] ];
+        [cell addSubview:fbImageView];
+        
+        imageUrlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", user.uid];
+        [cell.thumbnailImageView setImageWithURL:[NSURL URLWithString:imageUrlString]
+                                placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+        
+    } else if ([user.provider isEqualToString:@"linkedin-oauth2"]) {
+//        UIImageView *linkedinImageView = [[UIImageView alloc] initWithFrame:CGRectMake(108, 63, 16, 16)];
+        UIImageView *linkedinImageView = [[UIImageView alloc] initWithFrame:CGRectMake(87, 63, 16, 16)];
+        [linkedinImageView setImage: [UIImage imageNamed:@"linkedin.png"] ];
+        [cell addSubview:linkedinImageView];
+        [cell.thumbnailImageView setImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+    }
+    
     // Using SDWebImage to load image
-    NSString *imageUrl = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", user.uid];
-    [cell.thumbnailImageView setImageWithURL:[NSURL URLWithString:imageUrl]
-                   placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+
     CALayer * l = [cell.thumbnailImageView layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:5.0];
@@ -124,12 +141,16 @@
 // Refresh when dropping down
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-    double delayInSeconds = 1.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSLog(@"Refreshed");
-        [refreshControl endRefreshing];
-    });
+//    double delayInSeconds = 1.5;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        NSLog(@"Refreshed");
+//        [refreshControl endRefreshing];
+//    });
+    
+    WADataController *dataController = [WADataController sharedDataController];
+    [dataController nearbyUsersForBinding:dataController.me];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

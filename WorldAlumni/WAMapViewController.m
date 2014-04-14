@@ -8,21 +8,40 @@
 
 #import "WAMapViewController.h"
 #import "WADataController.h"
+#import "WAUserAnnotation.h"
+#import "WAUserNearby.h"
+#import "WAUserDetailViewController.h"
 
 @interface WAMapViewController () <MKMapViewDelegate, UISearchBarDelegate>
-
+@property (strong, nonatomic) WAUserAnnotation *selectedAnnotation;
 @end
 
 @implementation WAMapViewController
 
 @synthesize mapView = _mapView;
+@synthesize annotations = _annotations;
+@synthesize selectedAnnotation = _selectedAnnotation;
+
+
+//以下几个方法一般都要写
+-(void)updateMapView
+{
+    if (self.mapView.annotations) [self.mapView removeAnnotations:self.mapView.annotations];
+    if (self.annotations) [self.mapView addAnnotations:self.annotations];
+}
 
 - (void)setMapView:(MKMapView *)mapView
 {
     _mapView = mapView;
     _mapView.delegate = self;
     
-    //    [self updateMapView];
+//    [self updateMapView];
+}
+
+- (void)setAnnotations:(NSArray *)annotations
+{
+    _annotations = annotations;
+    [self updateMapView];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,6 +59,7 @@
     // Do any additional setup after loading the view.
     WADataController *dataController = [WADataController sharedDataController];
     [self centerToLocation:dataController.currentLocation];
+    [self updateMapView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,15 +95,62 @@
     
 }
 
-/*
-#pragma mark - Navigation
+// Selector functions
+-(void)showUserDetailFromMapView
+{
+    [self performSegueWithIdentifier: @"showUserDetailFromMapView" sender:self];
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+
+    // Don't overwrite current location annotation
+    if([annotation isKindOfClass: [MKUserLocation class]]) {
+        return nil;
+    } else if ([annotation isKindOfClass:[WAUserAnnotation class]]) {
+        
+        MKAnnotationView *aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"UserAnno"];
+        aView.canShowCallout = YES;// DON'T FORGET THIS LINE OF CODE !!
+        WAUserAnnotation *userAnnotation = (WAUserAnnotation *)annotation;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+        if ([userAnnotation.user.provider isEqualToString:@"facebook"]) {
+            NSString *imageUrlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", userAnnotation.user.uid];
+            [imageView setImageWithURL:[NSURL URLWithString:imageUrlString]
+                                    placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+        } else {
+            [imageView setImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+        }
+        
+        aView.leftCalloutAccessoryView = imageView;
+        
+        // create right view
+        aView.rightCalloutAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30,30)];
+        UIButton *showDetailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [showDetailButton addTarget:self action:@selector(showUserDetailFromMapView) forControlEvents:UIControlEventTouchUpInside];
+        [aView.rightCalloutAccessoryView addSubview:showDetailButton];
+        
+        return aView;
+        
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+
+    self.selectedAnnotation = view.annotation;
+
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"showUserDetailFromMapView"]) {
+        
+        WAUserDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.user = self.selectedAnnotation.user;
+    }
 }
-*/
 
 @end

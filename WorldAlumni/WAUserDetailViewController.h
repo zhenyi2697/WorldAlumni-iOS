@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WAUserNearby.h"
-@interface WAUserDetailViewController : UIViewController
+@interface WAUserDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) WAUserNearby *user;
 @end

@@ -15,6 +15,7 @@
 @interface WADataController : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong) WABinding *me;
 +(id)sharedDataController;
 
 -(void)checkBindingForUid:(NSString *)uid andProvider:(NSString *)provider;

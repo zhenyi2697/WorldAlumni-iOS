@@ -11,5 +11,5 @@
 
 @interface WAMapViewController : UIViewController
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (nonatomic,strong) NSArray *annotations;  // of id <MKAnnotation>
 @end

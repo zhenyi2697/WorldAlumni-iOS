@@ -11,10 +11,11 @@
 #import "WACheckBindingRequest.h"
 #import "WAObjectManager.h"
 #import "WAAppDelegate.h"
+#import "WAUserAnnotation.h"
 
 @implementation WADataController
 
-@synthesize locationManager = _locationManager, currentLocation = _currentLocation;
+@synthesize locationManager = _locationManager, currentLocation = _currentLocation, me = _me;
 
 + (id)sharedDataController {
     static WADataController *sharedDataController = nil;
@@ -59,6 +60,7 @@
         for (WABinding *b in bindings) {
             if ([b.provider isEqual:provider]) {
                 [self nearbyUsersForBinding:b];
+                self.me = b;
             }
         }
         
@@ -96,9 +98,17 @@
         appDelegate.listViewController.nearbyUsers = [result array];
         appDelegate.listViewController.navigationItem.leftBarButtonItem = appDelegate.listViewController.filterButton;
         
+        NSMutableArray *userAnnotations = [[NSMutableArray alloc] init];
         for (WAUserNearby *u in [result array]) {
-            NSLog(@"%@", u.firstName);
+            if ([u.latitude isEqualToString:@"0"] && [u.longitude isEqualToString:@"0"]) {
+                // just ignore, no real data returned
+            } else {
+                [userAnnotations addObject:[WAUserAnnotation annotationForUser:u]];
+            }
         }
+        appDelegate.mapViewController.annotations = userAnnotations;
+        
+        [appDelegate.listViewController.refreshControl endRefreshing];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Error");
