@@ -12,7 +12,7 @@
 @implementation WAAppDelegate
 
 @synthesize tabBarController = _tabBarController, loginViewController = _loginViewController;
-@synthesize listViewController = _listViewController, mapViewController = _mapViewController;
+@synthesize listViewController = _listViewController, mapViewController = _mapViewController, settingViewController = _settingViewController;
 
 - (void)facebookUserLoggedIn
 {
@@ -130,6 +130,9 @@
     
     UINavigationController *mapNavigationController = [[tabBarController viewControllers] objectAtIndex:1];
     self.mapViewController = [[mapNavigationController viewControllers] objectAtIndex:0];
+    
+    UINavigationController *settingNavigationController = [[tabBarController viewControllers] objectAtIndex:2];
+    self.settingViewController = [[settingNavigationController viewControllers] objectAtIndex:0];
     
     // Whenever a person opens the app, check for a cached session
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {

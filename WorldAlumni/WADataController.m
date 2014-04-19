@@ -110,13 +110,51 @@
         
         [appDelegate.listViewController.refreshControl endRefreshing];
         
+        appDelegate.settingViewController.user = [[result array] objectAtIndex:0];
+        
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Error");
     }];
 }
 
-#pragma mark - CLLocationManagerDelegate
+-(void)settingsForBinding:(WABinding *)binding
+{
+    
+}
 
+-(void)updateSettingEntry:(WAUserSettingEntry *)entry withBindingId:(NSString *)bindingId
+{
+    RKObjectMapping *requestMapping = [WAMappingProvider userSettingRequestMapping];
+    RKObjectMapping *settingMapping = [WAMappingProvider userSettingEntryMapping];
+    
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[requestMapping inverseMapping] objectClass:[WAUserSettingRequest class] rootKeyPath:nil  method:RKRequestMethodAny];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:settingMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
+    
+    WAObjectManager *manager = [WAObjectManager objectManager];
+    
+    [manager addRequestDescriptor:requestDescriptor];
+    [manager addResponseDescriptor:responseDescriptor];
+    
+    //prepare request object
+    WAUserSettingRequest *request = [[WAUserSettingRequest alloc] init];
+    request.bindingId = bindingId;
+    request.entryId = entry.eid;
+    request.value = entry.value;
+    
+    NSString *path = [NSString stringWithFormat:@"/api/%@/settings/", bindingId];
+    [manager postObject:request path:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+        
+        NSLog(@"Success update setting entry !!");
+        NSLog(@"%@", result);
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"Error");
+    }];
+    
+}
+
+#pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);

@@ -20,7 +20,7 @@
 
 -(NSArray *)sections{
     if (!_sections) {
-        _sections = [[NSArray alloc] initWithObjects:@"School", @"Company", nil];
+        _sections = [[NSArray alloc] initWithObjects:@"School", nil];
     }
     return _sections;
 }
@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"%@", self.user.provider);
     
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.user.firstName;
@@ -162,7 +160,7 @@
             [facebookButton setImage:[UIImage imageNamed:@"facebook.png"] forState:UIControlStateNormal];
             [facebookButton addTarget:self action:@selector(showFacebookUserProfile) forControlEvents:UIControlEventTouchUpInside];
             [customView addSubview:facebookButton];
-            [imageView setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", self.user.uid]] placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+            [imageView setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@?width=200&height=200", self.user.imageUrl]] placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
 
         } else if ([self.user.provider isEqual:@"linkedin-oauth2"] ){
 //            UIButton *linkedinButton = [[UIButton alloc] initWithFrame:CGRectMake(134, 54, 30, 30)];
@@ -170,7 +168,8 @@
             [linkedinButton setImage:[UIImage imageNamed:@"linkedin.png"] forState:UIControlStateNormal];
             [linkedinButton addTarget:self action:@selector(showLinkedUserProfile) forControlEvents:UIControlEventTouchUpInside];
             [customView addSubview:linkedinButton];
-            [imageView setImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+            [imageView setImageWithURL:[NSURL URLWithString:self.user.imageUrl]
+                                    placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
             
         }
         

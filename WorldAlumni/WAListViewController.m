@@ -117,7 +117,7 @@
         [fbImageView setImage: [UIImage imageNamed:@"facebook.png"] ];
         [cell addSubview:fbImageView];
         
-        imageUrlString = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?width=200&height=200", user.uid];
+        imageUrlString = [NSString stringWithFormat:@"%@?width=200&height=200", user.imageUrl];
         [cell.thumbnailImageView setImageWithURL:[NSURL URLWithString:imageUrlString]
                                 placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
         
@@ -126,7 +126,8 @@
         UIImageView *linkedinImageView = [[UIImageView alloc] initWithFrame:CGRectMake(87, 63, 16, 16)];
         [linkedinImageView setImage: [UIImage imageNamed:@"linkedin.png"] ];
         [cell addSubview:linkedinImageView];
-        [cell.thumbnailImageView setImage:[UIImage imageNamed:@"WorldAlumni.png"]];
+        [cell.thumbnailImageView setImageWithURL:[NSURL URLWithString:user.imageUrl]
+                                placeholderImage:[UIImage imageNamed:@"WorldAlumni.png"]];
     }
     
     // Using SDWebImage to load image

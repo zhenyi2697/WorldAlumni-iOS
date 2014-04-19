@@ -13,6 +13,8 @@
 #import "WALocation.h"
 #import "WAUserNearby.h"
 #import "WAAttendance.h"
+#import "WAUserSettingEntry.h"
+#import "WAUserSettingRequest.h"
 
 @implementation WAMappingProvider
 + (RKObjectMapping *) userMapping
@@ -94,6 +96,7 @@
     [userNearbyMapping addAttributeMappingsFromDictionary:@{
                                                                  @"bindingId": @"bindingId",
                                                                  @"uid": @"uid",
+                                                                 @"image_url": @"imageUrl",
                                                                  @"first_name": @"firstName",
                                                                  @"last_name": @"lastName",
                                                                  @"provider": @"provider",
@@ -113,6 +116,28 @@
                                                                                     withMapping:attendanceMapping]];
     
     return userNearbyMapping;
+}
+
++ (RKObjectMapping *) userSettingEntryMapping
+{
+    RKObjectMapping *settingMapping = [RKObjectMapping mappingForClass:[WAUserSettingEntry class]];
+    [settingMapping addAttributeMappingsFromDictionary:@{
+                                                         @"eid": @"eid",
+                                                         @"name": @"name",
+                                                         @"value": @"value"
+                                                         }];
+    return settingMapping;
+}
+
++ (RKObjectMapping *) userSettingRequestMapping
+{
+    RKObjectMapping *requestMapping = [RKObjectMapping mappingForClass:[WAUserSettingRequest class]];
+    [requestMapping addAttributeMappingsFromDictionary:@{
+                                                            @"bindingId": @"bindingId",
+                                                            @"entryId": @"entryId",
+                                                            @"value": @"value"
+                                                        }];
+    return requestMapping;
 }
 
 

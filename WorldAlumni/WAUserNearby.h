@@ -11,6 +11,7 @@
 @interface WAUserNearby : NSObject
 @property (strong, nonatomic) NSString *bindingId;
 @property (strong, nonatomic) NSString *uid;
+@property (strong, nonatomic) NSString *imageUrl;
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *provider;

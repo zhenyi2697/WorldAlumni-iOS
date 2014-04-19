@@ -11,6 +11,8 @@
 #import "WALocation.h"
 #import "WAUserNearby.h"
 #import "WAAttendance.h"
+#import "WAUserSettingEntry.h"
+#import "WAUserSettingRequest.h"
 
 @interface WADataController : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -20,4 +22,6 @@
 
 -(void)checkBindingForUid:(NSString *)uid andProvider:(NSString *)provider;
 -(void)nearbyUsersForBinding:(WABinding *)binding;
+-(void)settingsForBinding:(WABinding *)binding;
+-(void)updateSettingEntry:(WAUserSettingEntry *)entry withBindingId:(NSString *)bindingId;
 @end

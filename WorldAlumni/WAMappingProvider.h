@@ -16,4 +16,6 @@
 + (RKObjectMapping *) locationRequestMapping;
 + (RKObjectMapping *) userNearbyMapping;
 + (RKObjectMapping *) attendanceMapping;
++ (RKObjectMapping *) userSettingEntryMapping;
++ (RKObjectMapping *) userSettingRequestMapping;
 @end
