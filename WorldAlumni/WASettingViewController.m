@@ -18,7 +18,7 @@
 @implementation WASettingViewController
 
 @synthesize tableView = _tableView;
-@synthesize settingEntries = _settingEntries;
+@synthesize settingEntries = _settingEntries, settingDic = _settingDic;
 @synthesize user = _user;
 
 -(NSArray *)settingEntries{
@@ -26,6 +26,20 @@
         _settingEntries = [[NSArray alloc] initWithObjects:@"Distance Only", @"Invisible Mode", nil];
     }
     return _settingEntries;
+}
+
+-(NSMutableDictionary *)settingDic{
+    if (!_settingDic) {
+        _settingDic = [[NSMutableDictionary alloc] initWithCapacity:2];
+    }
+    return _settingDic;
+}
+
+-(void)setSettingDic:(NSMutableDictionary *)settingDic
+{
+    _settingDic = settingDic;
+    
+    [self.tableView reloadData];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -82,7 +96,13 @@
         
         cell.textLabel.text = [self.settingEntries objectAtIndex:indexPath.row];
         
-        int savedValue = [[NSUserDefaults standardUserDefaults] integerForKey:[self.settingEntries objectAtIndex:indexPath.row]];
+//        int savedValue = [[NSUserDefaults standardUserDefaults] integerForKey:[self.settingEntries objectAtIndex:indexPath.row]];
+
+        WAUserSettingEntry *setting = [self.settingDic objectForKey:[NSString stringWithFormat:@"%d", (indexPath.row+1)]];
+        int savedValue = 0;
+        if (setting) {
+            savedValue = [setting.value integerValue];
+        }
         
         if (savedValue == 0) {
             [switchView setOn:NO];
@@ -168,13 +188,17 @@
         value = 1;
     }
     
-    [[NSUserDefaults standardUserDefaults] setInteger:value forKey:[self.settingEntries objectAtIndex:switchControl.tag]];
+//    [[NSUserDefaults standardUserDefaults] setInteger:value forKey:[self.settingEntries objectAtIndex:switchControl.tag]];
+    
     WADataController *dataController = [WADataController sharedDataController];
     WAUserSettingEntry *entry = [[WAUserSettingEntry alloc] init];
-    entry.eid = [NSString stringWithFormat:@"%ld", (switchControl.tag + 1)];
+    entry.eid = [NSString stringWithFormat:@"%d", (switchControl.tag + 1)];
     entry.value = [NSString stringWithFormat:@"%d", value];
     
     [dataController updateSettingEntry:entry withBindingId:self.user.bindingId];
+    // also update settings in self
+    WAUserSettingEntry *s = [self.settingDic objectForKey:entry.eid];
+    s.value = entry.value;
     
 }
 

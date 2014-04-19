@@ -12,4 +12,5 @@
 @interface WASettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) WAUserNearby *user;
+@property (nonatomic,strong) NSMutableDictionary *settingDic;
 @end

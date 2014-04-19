@@ -12,6 +12,7 @@
 #import "WAObjectManager.h"
 #import "WAAppDelegate.h"
 #import "WAUserAnnotation.h"
+#import "WAUserSettingEntry.h"
 
 @implementation WADataController
 
@@ -99,7 +100,8 @@
         appDelegate.listViewController.navigationItem.leftBarButtonItem = appDelegate.listViewController.filterButton;
         
         NSMutableArray *userAnnotations = [[NSMutableArray alloc] init];
-        for (WAUserNearby *u in [result array]) {
+        NSArray *nearbyUsers = [result array];
+        for (WAUserNearby *u in nearbyUsers) {
             if ([u.latitude isEqualToString:@"0"] && [u.longitude isEqualToString:@"0"]) {
                 // just ignore, no real data returned
             } else {
@@ -110,15 +112,46 @@
         
         [appDelegate.listViewController.refreshControl endRefreshing];
         
-        appDelegate.settingViewController.user = [[result array] objectAtIndex:0];
+        WAUserNearby *me = [nearbyUsers objectAtIndex:0];
+        appDelegate.settingViewController.user = me;
+        
+        [self settingsForBinding:me.bindingId];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Error");
     }];
 }
 
--(void)settingsForBinding:(WABinding *)binding
+-(void)settingsForBinding:(NSString *)bindingId
 {
+    RKObjectMapping *settingMapping = [WAMappingProvider userSettingEntryMapping];
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/html"];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:settingMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://theworldalumni.com/api/%@/settings/", bindingId];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
+        
+        NSArray *settings = [result array];
+        
+        WAAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:[settings count]];
+        
+        for (WAUserSettingEntry *s in settings) {
+            [dic setObject:s forKey:s.eid];
+        }
+        appDelegate.settingViewController.settingDic = dic;
+        
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed with error: %@", [error localizedDescription]);
+    }];
+    
+    [operation start];
     
 }
 

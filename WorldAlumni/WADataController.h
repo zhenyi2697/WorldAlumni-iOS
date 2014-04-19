@@ -22,6 +22,6 @@
 
 -(void)checkBindingForUid:(NSString *)uid andProvider:(NSString *)provider;
 -(void)nearbyUsersForBinding:(WABinding *)binding;
--(void)settingsForBinding:(WABinding *)binding;
+-(void)settingsForBinding:(NSString *)bindingId;
 -(void)updateSettingEntry:(WAUserSettingEntry *)entry withBindingId:(NSString *)bindingId;
 @end
